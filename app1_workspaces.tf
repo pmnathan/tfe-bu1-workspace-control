@@ -9,6 +9,6 @@ resource "tfe_workspace" "bu1-app1-aws-useast1-dev" {
   execution_mode = "remote"
   vcs_repo   {
     identifier     = "pmnathan/tfworkspacedemo"
-    oauth_token_id = client.oauth_token_id
+    oauth_token_id = tfe_oauth_client.client.oauth_token_id
   }
 }
