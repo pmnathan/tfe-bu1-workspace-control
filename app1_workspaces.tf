@@ -14,7 +14,7 @@ resource "tfe_workspace" "bu1-app1-aws-useast1-dev" {
 }
 
 resource "tfe_workspace" "bu1-app1-aws-useast1-test" {
-  name           = "bu1-app1-aws-useast1-dev"
+  name           = "bu1-app1-aws-useast1-test"
   organization   = "prakash_demo_tfc_business"
   execution_mode = "remote"
   vcs_repo   {
@@ -25,7 +25,7 @@ resource "tfe_workspace" "bu1-app1-aws-useast1-test" {
 
 
 resource "tfe_workspace" "bu1-app1-aws-useast1-prod" {
-  name           = "bu1-app1-aws-useast1-dev"
+  name           = "bu1-app1-aws-useast1-prod"
   organization   = "prakash_demo_tfc_business"
   execution_mode = "remote"
   vcs_repo   {
@@ -35,7 +35,7 @@ resource "tfe_workspace" "bu1-app1-aws-useast1-prod" {
 }
 
 resource "tfe_workspace" "bu1-app1-aws-useast2-prod" {
-  name           = "bu1-app1-aws-useast1-dev"
+  name           = "bu1-app1-aws-useast2-prod"
   organization   = "prakash_demo_tfc_business"
   execution_mode = "remote"
   vcs_repo   {
