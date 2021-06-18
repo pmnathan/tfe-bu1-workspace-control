@@ -13,6 +13,7 @@ resource "tfe_workspace" "bu1-app1-aws-useast1-dev" {
   }
 }
 
+/*
 resource "tfe_workspace" "bu1-app1-aws-useast1-test" {
   name           = "bu1-app1-aws-useast1-test"
   organization   = "prakash_demo_tfc_business"
@@ -43,3 +44,5 @@ resource "tfe_workspace" "bu1-app1-aws-useast2-prod" {
     oauth_token_id = data.tfe_oauth_client.client.oauth_token_id
   }
 }
+
+*/
