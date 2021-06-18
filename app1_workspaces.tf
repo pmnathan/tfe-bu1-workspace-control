@@ -2,7 +2,7 @@ data "tfe_oauth_client" "client" {
   oauth_client_id = "oc-hd7uSxBZW61jiwVp"
 }
 
-
+/*
 resource "tfe_workspace" "bu1-app1-aws-useast1-dev" {
   name           = "bu1-app1-aws-useast1-dev"
   organization   = "prakash_demo_tfc_business"
@@ -12,7 +12,7 @@ resource "tfe_workspace" "bu1-app1-aws-useast1-dev" {
     oauth_token_id = data.tfe_oauth_client.client.oauth_token_id
   }
 }
-
+*/
 /*
 resource "tfe_workspace" "bu1-app1-aws-useast1-test" {
   name           = "bu1-app1-aws-useast1-test"
