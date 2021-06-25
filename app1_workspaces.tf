@@ -19,10 +19,17 @@ resource "tfe_workspace" "bu1-app1-aws-useast1-dev" {
 }
 
 resource "tfe_team_access" "bu1-app1-aws-useast1-dev-accessadmin" {
-  access       = "read"
+  access       = "admin"
   team_id      = data.tfe_team.bu1admin.id
   workspace_id = tfe_workspace.bu1-app1-aws-useast1-dev.id
 }
+
+resource "tfe_team_access" "bu1-app1-aws-useast1-dev-accessdev" {
+  access       = "write"
+  team_id      = data.tfe_team.bu1admin.id
+  workspace_id = tfe_workspace.bu1-app1-aws-useast1-dev.id
+}
+
 
 
 resource "tfe_workspace" "bu1-app1-aws-useast1-test" {
@@ -31,12 +38,28 @@ resource "tfe_workspace" "bu1-app1-aws-useast1-test" {
   execution_mode = "remote"
 }
 
+resource "tfe_team_access" "bu1-app1-aws-useast1-test-accessadmin" {
+  access       = "admin"
+  team_id      = data.tfe_team.bu1admin.id
+  workspace_id = tfe_workspace.bu1-app1-aws-useast1-test.id
+}
+
+resource "tfe_team_access" "bu1-app1-aws-useast1-test-accessdev" {
+  access       = "write"
+  team_id      = data.tfe_team.bu1admin.id
+  workspace_id = tfe_workspace.bu1-app1-aws-useast1-test.id
+}
+
+
+
+
 
 resource "tfe_workspace" "bu1-app1-aws-useast1-prod" {
   name           = "bu1-app1-aws-useast1-prod"
   organization   = var.org_name
   execution_mode = "remote"
 }
+
 
 resource "tfe_workspace" "bu1-app1-aws-useast2-prod" {
   name           = "bu1-app1-aws-useast2-prod"
