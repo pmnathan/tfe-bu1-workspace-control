@@ -70,3 +70,20 @@ resource "tfe_workspace" "bu1-app1-aws-useast2-prod" {
 }
 
 
+resource "tfe_workspace" "bu1-app2-aws-useast2-prod" {
+  name           = "bu1-app1-aws-useast2-prod"
+  organization   = var.org_name
+  execution_mode = "remote"
+}
+
+resource "tfe_team_access" "bu1-app2-aws-useast2-test-accessadmin" {
+  access       = "admin"
+  team_id      = data.tfe_team.bu1admin.id
+  workspace_id = tfe_workspace.bu1-app1-aws-useast2-prod.id
+}
+
+resource "tfe_team_access" "bu1-app2-aws-useast2-test-accessdev" {
+  access       = "read"
+  team_id      = data.tfe_team.bu1dev.id
+  workspace_id = tfe_workspace.bu1-app1-aws-useast2-prod.id
+}
