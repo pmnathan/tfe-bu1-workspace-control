@@ -18,6 +18,11 @@ resource "tfe_workspace" "bu1-app1-aws-useast1-dev" {
   execution_mode = "remote"
 }
 
+resource "tfe_team_access" "bu1-app1-aws-useast1-dev-accessadmin" {
+  access       = "read"
+  team_id      = data.tfe_team.bu1admin.id
+  workspace_id = tfe_workspace.bu1-app1-aws-useast1-dev.id
+}
 
 
 resource "tfe_workspace" "bu1-app1-aws-useast1-test" {
