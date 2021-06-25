@@ -11,6 +11,10 @@ data "tfe_team" "bu1admin" {
   organization = var.org_name
 }
 
+data "tfe_team" "bu1dev" {
+  name         = "bu1dev"
+  organization = var.org_name
+}
 
 resource "tfe_workspace" "bu1-app1-aws-useast1-dev" {
   name           = "bu1-app1-aws-useast1-dev"
@@ -26,7 +30,7 @@ resource "tfe_team_access" "bu1-app1-aws-useast1-dev-accessadmin" {
 
 resource "tfe_team_access" "bu1-app1-aws-useast1-dev-accessdev" {
   access       = "write"
-  team_id      = data.tfe_team.bu1admin.id
+  team_id      = data.tfe_team.bu1dev.id
   workspace_id = tfe_workspace.bu1-app1-aws-useast1-dev.id
 }
 
@@ -40,7 +44,7 @@ resource "tfe_workspace" "bu1-app1-aws-useast1-test" {
 
 resource "tfe_team_access" "bu1-app1-aws-useast1-test-accessadmin" {
   access       = "admin"
-  team_id      = data.tfe_team.bu1admin.id
+  team_id      = data.tfe_team.bu1dev.id
   workspace_id = tfe_workspace.bu1-app1-aws-useast1-test.id
 }
 
@@ -49,8 +53,6 @@ resource "tfe_team_access" "bu1-app1-aws-useast1-test-accessdev" {
   team_id      = data.tfe_team.bu1admin.id
   workspace_id = tfe_workspace.bu1-app1-aws-useast1-test.id
 }
-
-
 
 
 
