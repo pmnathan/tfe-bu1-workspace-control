@@ -8,11 +8,8 @@ variable "aws_key_id" {
 
 variable "aws_key_secret" {
   description = "AWS SECRET"
-  default     = "us-east-2"
   sensitive   = true
 }
-
-
 
 data "tfe_oauth_client" "client" {
   oauth_client_id = "oc-hd7uSxBZW61jiwVp"
