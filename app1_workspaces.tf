@@ -11,6 +11,20 @@ variable "aws_key_secret" {
   sensitive   = true
 }
 
+
+variable "test_aws_key_id" {
+  description = "AWS Key ID"
+}
+
+variable "test_aws_key_secret" {
+  description = "AWS SECRET"
+  sensitive   = true
+}
+
+
+
+
+
 data "tfe_oauth_client" "client" {
   oauth_client_id = "oc-hd7uSxBZW61jiwVp"
 }
@@ -70,14 +84,14 @@ resource "tfe_workspace" "bu1-app1-aws-useast1-test" {
 
 resource "tfe_variable" "bu1-app1-aws-useast1-test-awskey" {
   key          = "AWS_KEY_ID"
-  value        = var.aws_key_id
+  value        = var.test_aws_key_id
   category     = "terraform"
   workspace_id = tfe_workspace.bu1-app1-aws-useast1-test.id
 }
 
 resource "tfe_variable" "bu1-app1-aws-useast1-test-awssecret" {
   key          = "AWS_SECRET"
-  value        = var.aws_key_secret
+  value        = var.test_aws_key_secret
   category     = "terraform"
   workspace_id = tfe_workspace.bu1-app1-aws-useast1-test.id
   sensitive    = true
