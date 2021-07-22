@@ -96,3 +96,41 @@ resource "tfe_team_access" "bu1-app1-aws-useast1-test-accessdev" {
 }
 
 
+
+
+resource "tfe_workspace" "bu1-app1-aws-useast1-prod" {
+  name           = "bu1-app1-aws-useast1-prod"
+  organization   = var.org_name
+  execution_mode = "remote"
+}
+
+resource "tfe_variable" "bu1-app1-aws-useast1-prod-awskey" {
+  key          = "AWS_KEY_ID"
+  value        = var.aws_key_id
+  category     = "terraform"
+  workspace_id = tfe_workspace.bu1-app1-aws-useast1-prod.id
+}
+
+resource "tfe_variable" "bu1-app1-aws-useast1-prod-awssecret" {
+  key          = "AWS_SECRET"
+  value        = var.aws_key_secret
+  category     = "terraform"
+  workspace_id = tfe_workspace.bu1-app1-aws-useast1-prod.id
+  sensitive    = true
+}
+
+resource "tfe_team_access" "bu1-app1-aws-useast1-prod-accessadmin" {
+  access       = "admin"
+  team_id      = data.tfe_team.bu1dev.id
+  workspace_id = tfe_workspace.bu1-app1-aws-useast1-prod.id
+}
+
+resource "tfe_team_access" "bu1-app1-aws-useast1-prod-accessdev" {
+  access       = "write"
+  team_id      = data.tfe_team.bu1admin.id
+  workspace_id = tfe_workspace.bu1-app1-aws-useast1-prod.id
+}
+
+
+
+
