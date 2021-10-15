@@ -143,10 +143,10 @@ resource "tfe_team_access" "bu1-app1-aws-useast1-prod-accessdev" {
   team_id      = data.tfe_team.bu1admin.id
   workspace_id = tfe_workspace.bu1-app1-aws-useast1-prod.id
   permissions {
-    runs = "read"
-    variables = "read"
-    state_versions = "read"
-    sentinel_mocks = "read"
+    runs = "none"
+    variables = "none"
+    state_versions = "none"
+    sentinel_mocks = "none"
     workspace_locking = true
   }
 }
