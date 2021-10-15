@@ -145,8 +145,8 @@ resource "tfe_team_access" "bu1-app1-aws-useast1-prod-accessdev" {
   permissions {
     runs = "read"
     variables = "read"
-    state_versions = "true"
-    sentinel_mocks = "true"
+    state_versions = "read"
+    sentinel_mocks = "read"
     workspace_locking = true
   }
 }
